@@ -1,4 +1,5 @@
 import { Action } from 'redux';
+import { RepaymentFrequency } from '../repayments';
 
 /* Set loan principal */
 
@@ -59,6 +60,18 @@ export const setRepaymentFrequency = (repaymentFrequency: number): ActionSetRepa
 		repaymentFrequency,
 	},
 });
+
+export const setRepaymentFrequencyMonthly = (): ActionSetRepaymentFrequency => (
+	setRepaymentFrequency(RepaymentFrequency.MONTHLY)
+);
+
+export const setRepaymentFrequencyFortnightly = (): ActionSetRepaymentFrequency => (
+	setRepaymentFrequency(RepaymentFrequency.FORTNIGHTLY)
+);
+
+export const setRepaymentFrequencyWeekly = (): ActionSetRepaymentFrequency => (
+	setRepaymentFrequency(RepaymentFrequency.WEEKLY)
+);
 
 /* Set interest rate */
 
