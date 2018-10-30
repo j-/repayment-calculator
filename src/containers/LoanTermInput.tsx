@@ -22,6 +22,7 @@ const mergeProps: MergeProps<P, P, P, P> = (state, dispatch, own) => ({
 	...own,
 	type: 'number',
 	min: MIN_LOAN_TERM,
+	step: 1,
 });
 
 export default connect(

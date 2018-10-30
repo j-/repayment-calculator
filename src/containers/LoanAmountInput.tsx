@@ -20,6 +20,7 @@ const mergeProps: MergeProps<P, P, P, P> = (state, dispatch, own) => ({
 	...dispatch,
 	...own,
 	type: 'number',
+	min: 0,
 });
 
 export default connect(
