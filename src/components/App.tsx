@@ -1,9 +1,9 @@
 import * as React from 'react';
-import LoanAmount from '../containers/LoanAmount';
+import LoanAmountInput from '../containers/LoanAmountInput';
 
 const App: React.StatelessComponent = () => (
 	<div className="App">
-		<LoanAmount />
+		<LoanAmountInput />
 	</div>
 );
 
