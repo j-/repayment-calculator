@@ -102,7 +102,7 @@ export const getRepaymentAmount = (state: RootReducerState) => (
 		loanTerm: getLoanTerm(state),
 		repaymentFrequency: getRepaymentFrequency(state),
 		interestRate: getInterestRateAnnualPercentage(state),
-	})
+	}) || 0
 );
 
 /** Repayment amount for weekly frequency. */
@@ -112,7 +112,7 @@ export const getRepaymentAmountWeekly = (state: RootReducerState) => (
 		loanTerm: getLoanTerm(state),
 		repaymentFrequency: RepaymentFrequency.WEEKLY,
 		interestRate: getInterestRateAnnualPercentage(state),
-	})
+	}) || 0
 );
 
 /** Repayment amount for fortnightly frequency. */
@@ -122,7 +122,7 @@ export const getRepaymentAmountFortnightly = (state: RootReducerState) => (
 		loanTerm: getLoanTerm(state),
 		repaymentFrequency: RepaymentFrequency.FORTNIGHTLY,
 		interestRate: getInterestRateAnnualPercentage(state),
-	})
+	}) || 0
 );
 
 /** Repayment amount for monthly frequency. */
@@ -132,5 +132,5 @@ export const getRepaymentAmountMonthly = (state: RootReducerState) => (
 		loanTerm: getLoanTerm(state),
 		repaymentFrequency: RepaymentFrequency.MONTHLY,
 		interestRate: getInterestRateAnnualPercentage(state),
-	})
+	}) || 0
 );
