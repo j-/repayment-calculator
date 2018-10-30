@@ -1,5 +1,12 @@
 import { Reducer } from 'redux';
 
+import {
+	isActionSetLoanPrincipal,
+	isActionSetLoanTerm,
+	isActionSetRepaymentFrequency,
+	isActionSetInterestRate,
+} from './actions';
+
 export interface RootReducerState {
 	loanPrincipal: number;
 	loanTerm: number;
@@ -15,6 +22,34 @@ const DEFAULT_STATE: RootReducerState = {
 };
 
 const reducer: Reducer<RootReducerState> = (state = DEFAULT_STATE, action) => {
+	if (isActionSetLoanPrincipal(action)) {
+		return {
+			...state,
+			loanPrincipal: action.data.loanPrincipal,
+		};
+	}
+
+	if (isActionSetLoanTerm(action)) {
+		return {
+			...state,
+			loanTerm: action.data.loanTerm,
+		};
+	}
+
+	if (isActionSetRepaymentFrequency(action)) {
+		return {
+			...state,
+			repaymentFrequency: action.data.repaymentFrequency,
+		};
+	}
+
+	if (isActionSetInterestRate(action)) {
+		return {
+			...state,
+			interestRate: action.data.interestRate,
+		};
+	}
+
 	return state;
 };
 
