@@ -7,6 +7,7 @@ import { Provider as StoreProvider } from 'react-redux';
 import App from './components/App';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
+import 'bootstrap/dist/css/bootstrap.css';
 
 const store = createStore(rootReducer, composeWithDevTools());
 
