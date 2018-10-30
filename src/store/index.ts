@@ -64,3 +64,21 @@ export const getRepaymentAmount = (state: RootReducerState) => (
 	(getLoanPrincipal(state) * getInterestRatePeriodRatio(state)) /
 	(1 - ((1 + getInterestRatePeriodRatio(state)) ** -getNumberOfRepayments(state)))
 );
+
+/** Repayment amount for weekly frequency. */
+export const getRepaymentAmountWeekly = (state: RootReducerState) => (
+	(getLoanPrincipal(state) * getInterestRatePeriodRatio(state)) /
+	(1 - ((1 + getInterestRatePeriodRatio(state)) ** -(getLoanTerm(state) * 52)))
+);
+
+/** Repayment amount for fortnightly frequency. */
+export const getRepaymentAmountFortnightly = (state: RootReducerState) => (
+	(getLoanPrincipal(state) * getInterestRatePeriodRatio(state)) /
+	(1 - ((1 + getInterestRatePeriodRatio(state)) ** -(getLoanTerm(state) * 26)))
+);
+
+/** Repayment amount for monthly frequency. */
+export const getRepaymentAmountMonthly = (state: RootReducerState) => (
+	(getLoanPrincipal(state) * getInterestRatePeriodRatio(state)) /
+	(1 - ((1 + getInterestRatePeriodRatio(state)) ** -(getLoanTerm(state) * 12)))
+);
