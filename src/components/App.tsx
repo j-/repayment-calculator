@@ -2,7 +2,7 @@ import * as React from 'react';
 import LoanAmountInput from '../containers/LoanAmountInput';
 import InterestRateInput from '../containers/InterestRateInput';
 import LoanTermInput from '../containers/LoanTermInput';
-import SwitchFrequency from 'src/containers/SwitchFrequency';
+import SwitchFrequency from '../containers/SwitchFrequency';
 
 const App: React.StatelessComponent = () => (
 	<div className="App container">

@@ -1,7 +1,7 @@
 import { connect, MapStateToProps, MapDispatchToProps, MergeProps } from 'react-redux';
 import Input, { Props as P } from '../components/Input';
 import { RootReducerState, getLoanPrincipal } from '../store';
-import { setLoanPrincipal } from 'src/store/actions';
+import { setLoanPrincipal } from '../store/actions';
 
 const mapStateToProps: MapStateToProps<P, P, RootReducerState> = (state) => ({
 	value: getLoanPrincipal(state),

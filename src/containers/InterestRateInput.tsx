@@ -1,7 +1,7 @@
 import { connect, MapStateToProps, MapDispatchToProps, MergeProps } from 'react-redux';
 import Input, { Props as P } from '../components/Input';
 import { RootReducerState, getInterestRateAnnualPercentage } from '../store';
-import { setInterestRate } from 'src/store/actions';
+import { setInterestRate } from '../store/actions';
 
 const mapStateToProps: MapStateToProps<P, P, RootReducerState> = (state) => ({
 	value: getInterestRateAnnualPercentage(state),
