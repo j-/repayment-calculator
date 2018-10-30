@@ -3,6 +3,7 @@ import * as classNames from 'classnames';
 import { connect, MapStateToProps, MapDispatchToProps } from 'react-redux';
 import Dollars from '../components/Dollars';
 import { setRepaymentFrequency } from '../store/actions';
+import { RepaymentFrequency } from '../repayments';
 
 import {
 	RootReducerState,
@@ -50,9 +51,9 @@ const SwitchFrequency: React.StatelessComponent<Props> = ({
 	<ul className="SwitchFrequency nav nav-tabs row">
 		<li className="nav-item col-sm">
 			<a
-				className={classNames('nav-link', repaymentFrequency === 12 && 'active')}
+				className={classNames('nav-link', repaymentFrequency === RepaymentFrequency.MONTHLY && 'active')}
 				href="#"
-				onClick={() => setRepaymentFrequency(12)}
+				onClick={() => setRepaymentFrequency(RepaymentFrequency.MONTHLY)}
 			>
 				<span className="h2">
 					<Dollars>{repaymentAmountMonthly}</Dollars>
@@ -61,9 +62,9 @@ const SwitchFrequency: React.StatelessComponent<Props> = ({
 		</li>
 		<li className="nav-item col-sm">
 			<a
-				className={classNames('nav-link', repaymentFrequency === 26 && 'active')}
+				className={classNames('nav-link', repaymentFrequency === RepaymentFrequency.FORTNIGHTLY && 'active')}
 				href="#"
-				onClick={() => setRepaymentFrequency(26)}
+				onClick={() => setRepaymentFrequency(RepaymentFrequency.FORTNIGHTLY)}
 			>
 				<span className="h2">
 					<Dollars>{repaymentAmountFortnightly}</Dollars>
@@ -72,9 +73,9 @@ const SwitchFrequency: React.StatelessComponent<Props> = ({
 		</li>
 		<li className="nav-item col-sm">
 			<a
-				className={classNames('nav-link', repaymentFrequency === 52 && 'active')}
+				className={classNames('nav-link', repaymentFrequency === RepaymentFrequency.WEEKLY && 'active')}
 				href="#"
-				onClick={() => setRepaymentFrequency(52)}
+				onClick={() => setRepaymentFrequency(RepaymentFrequency.WEEKLY)}
 			>
 				<span className="h2">
 					<Dollars>{repaymentAmountWeekly}</Dollars>

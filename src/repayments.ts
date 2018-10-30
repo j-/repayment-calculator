@@ -1,3 +1,9 @@
+export enum RepaymentFrequency {
+	MONTHLY = 12,
+	FORTNIGHTLY = 26,
+	WEEKLY = 52,
+}
+
 /** Represents a single loan repayment. */
 export interface Repayment {
 	/** This repayment number. */

@@ -1,5 +1,5 @@
 import { Reducer } from 'redux';
-import { calculateRepaymentAmount } from '../repayments';
+import { RepaymentFrequency, calculateRepaymentAmount } from '../repayments';
 
 import {
 	isActionSetLoanPrincipal,
@@ -110,7 +110,7 @@ export const getRepaymentAmountWeekly = (state: RootReducerState) => (
 	calculateRepaymentAmount({
 		loanPrincipal: getLoanPrincipal(state),
 		loanTerm: getLoanTerm(state),
-		repaymentFrequency: 52,
+		repaymentFrequency: RepaymentFrequency.WEEKLY,
 		interestRate: getInterestRateAnnualPercentage(state),
 	})
 );
@@ -120,7 +120,7 @@ export const getRepaymentAmountFortnightly = (state: RootReducerState) => (
 	calculateRepaymentAmount({
 		loanPrincipal: getLoanPrincipal(state),
 		loanTerm: getLoanTerm(state),
-		repaymentFrequency: 26,
+		repaymentFrequency: RepaymentFrequency.FORTNIGHTLY,
 		interestRate: getInterestRateAnnualPercentage(state),
 	})
 );
@@ -130,7 +130,7 @@ export const getRepaymentAmountMonthly = (state: RootReducerState) => (
 	calculateRepaymentAmount({
 		loanPrincipal: getLoanPrincipal(state),
 		loanTerm: getLoanTerm(state),
-		repaymentFrequency: 12,
+		repaymentFrequency: RepaymentFrequency.MONTHLY,
 		interestRate: getInterestRateAnnualPercentage(state),
 	})
 );
