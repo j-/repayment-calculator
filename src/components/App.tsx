@@ -1,8 +1,9 @@
 import * as React from 'react';
+import LoanAmount from '../containers/LoanAmount';
 
 const App: React.StatelessComponent = () => (
 	<div className="App">
-		{null}
+		<LoanAmount />
 	</div>
 );
 
