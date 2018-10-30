@@ -78,3 +78,24 @@ export const buildRepaymentTable: RepaymentTableBuilder = ({
 	}
 	return table;
 };
+
+export interface RepaymentAmountCalculatorArgs {
+	loanPrincipal: number;
+	loanTerm: number;
+	repaymentFrequency: number;
+	interestRate: number;
+}
+
+export interface RepaymentAmountCalculator {
+	(args: RepaymentAmountCalculatorArgs): number;
+}
+
+export const calculateRepaymentAmount: RepaymentAmountCalculator = ({
+	loanPrincipal,
+	loanTerm,
+	repaymentFrequency,
+	interestRate,
+}) => (
+	(loanPrincipal * (interestRate / 100 / repaymentFrequency)) /
+	(1 - ((1 + (interestRate / 100 / repaymentFrequency)) ** -(loanTerm * repaymentFrequency)))
+);

@@ -1,4 +1,5 @@
 import { Reducer } from 'redux';
+import { calculateRepaymentAmount } from '../repayments';
 
 import {
 	isActionSetLoanPrincipal,
@@ -96,24 +97,40 @@ export const getInterestRatePeriodRatio = (state: RootReducerState) => (
 
 /** Amount of each repayment including principal and interest. */
 export const getRepaymentAmount = (state: RootReducerState) => (
-	(getLoanPrincipal(state) * getInterestRatePeriodRatio(state)) /
-	(1 - ((1 + getInterestRatePeriodRatio(state)) ** -getNumberOfRepayments(state)))
+	calculateRepaymentAmount({
+		loanPrincipal: getLoanPrincipal(state),
+		loanTerm: getLoanTerm(state),
+		repaymentFrequency: getRepaymentFrequency(state),
+		interestRate: getInterestRateAnnualPercentage(state),
+	})
 );
 
 /** Repayment amount for weekly frequency. */
 export const getRepaymentAmountWeekly = (state: RootReducerState) => (
-	(getLoanPrincipal(state) * getInterestRatePeriodRatio(state)) /
-	(1 - ((1 + getInterestRatePeriodRatio(state)) ** -(getLoanTerm(state) * 52)))
+	calculateRepaymentAmount({
+		loanPrincipal: getLoanPrincipal(state),
+		loanTerm: getLoanTerm(state),
+		repaymentFrequency: 52,
+		interestRate: getInterestRateAnnualPercentage(state),
+	})
 );
 
 /** Repayment amount for fortnightly frequency. */
 export const getRepaymentAmountFortnightly = (state: RootReducerState) => (
-	(getLoanPrincipal(state) * getInterestRatePeriodRatio(state)) /
-	(1 - ((1 + getInterestRatePeriodRatio(state)) ** -(getLoanTerm(state) * 26)))
+	calculateRepaymentAmount({
+		loanPrincipal: getLoanPrincipal(state),
+		loanTerm: getLoanTerm(state),
+		repaymentFrequency: 26,
+		interestRate: getInterestRateAnnualPercentage(state),
+	})
 );
 
 /** Repayment amount for monthly frequency. */
 export const getRepaymentAmountMonthly = (state: RootReducerState) => (
-	(getLoanPrincipal(state) * getInterestRatePeriodRatio(state)) /
-	(1 - ((1 + getInterestRatePeriodRatio(state)) ** -(getLoanTerm(state) * 12)))
+	calculateRepaymentAmount({
+		loanPrincipal: getLoanPrincipal(state),
+		loanTerm: getLoanTerm(state),
+		repaymentFrequency: 12,
+		interestRate: getInterestRateAnnualPercentage(state),
+	})
 );
