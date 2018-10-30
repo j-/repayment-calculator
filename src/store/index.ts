@@ -1,5 +1,6 @@
 import { Reducer } from 'redux';
 import { RepaymentFrequency, calculateRepaymentAmount } from '../repayments';
+import { MIN_LOAN_TERM } from '../loan';
 
 import {
 	isActionSetLoanPrincipal,
@@ -33,7 +34,7 @@ const reducer: Reducer<RootReducerState> = (state = DEFAULT_STATE, action) => {
 	if (isActionSetLoanTerm(action)) {
 		return {
 			...state,
-			loanTerm: action.data.loanTerm,
+			loanTerm: Math.max(action.data.loanTerm, MIN_LOAN_TERM),
 		};
 	}
 

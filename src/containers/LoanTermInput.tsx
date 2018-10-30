@@ -2,6 +2,7 @@ import { connect, MapStateToProps, MapDispatchToProps, MergeProps } from 'react-
 import Input, { Props as P } from '../components/Input';
 import { RootReducerState, getLoanTerm } from '../store';
 import { setLoanTerm } from '../store/actions';
+import { MIN_LOAN_TERM } from '../loan';
 
 const mapStateToProps: MapStateToProps<P, P, RootReducerState> = (state) => ({
 	value: getLoanTerm(state),
@@ -20,6 +21,7 @@ const mergeProps: MergeProps<P, P, P, P> = (state, dispatch, own) => ({
 	...dispatch,
 	...own,
 	type: 'number',
+	min: MIN_LOAN_TERM,
 });
 
 export default connect(
