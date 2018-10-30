@@ -1,5 +1,5 @@
 /** Represents a single loan repayment. */
-interface Repayment {
+export interface Repayment {
 	/** This repayment number. */
 	period: number;
 	/** Amount paid each period. */
@@ -17,13 +17,13 @@ interface Repayment {
 }
 
 /** All repayments for the lifetime of a loan. */
-interface RepaymentTable extends Array<Repayment> {
+export interface RepaymentTable extends Array<Repayment> {
 	/** The total number of repayments. */
 	length: number;
 }
 
 /** These values are used for calculating the repayment table. */
-interface RepaymentTableBuilderArgs {
+export interface RepaymentTableBuilderArgs {
 	/** Amount originally borrowed. */
 	loanAmount: number;
 	/** Amount paid each period. */
@@ -35,7 +35,7 @@ interface RepaymentTableBuilderArgs {
 }
 
 /** Generates a repayment table given details about a loan. */
-interface RepaymentTableBuilder {
+export interface RepaymentTableBuilder {
 	(args: RepaymentTableBuilderArgs): RepaymentTable;
 }
 
