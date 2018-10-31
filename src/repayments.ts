@@ -77,7 +77,7 @@ export const buildRepaymentTable: RepaymentTableBuilder = ({
 		thisPayment.interestThisPayment = lastPayment.unpaidPrincipalBalance * interestRatePeriodRatio;
 		thisPayment.principalThisPayment = thisPayment.repaymentAmount - thisPayment.interestThisPayment;
 		thisPayment.interestToDate = lastPayment.interestToDate + thisPayment.interestThisPayment;
-		thisPayment.unpaidPrincipalBalance = lastPayment.unpaidPrincipalBalance - thisPayment.principalThisPayment;
+		thisPayment.unpaidPrincipalBalance = Math.max(lastPayment.unpaidPrincipalBalance - thisPayment.principalThisPayment, 0);
 		thisPayment.costToDate = lastPayment.costToDate + repaymentAmount;
 		table.push(thisPayment);
 		lastPayment = thisPayment;
