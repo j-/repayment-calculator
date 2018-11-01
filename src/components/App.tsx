@@ -3,7 +3,7 @@ import LoanAmountInput from '../containers/LoanAmountInput';
 import InterestRateInput from '../containers/InterestRateInput';
 import LoanTermInput from '../containers/LoanTermInput';
 import SwitchFrequency from '../containers/SwitchFrequency';
-import RepaymentTable from 'src/containers/RepaymentTable';
+import RepaymentTable from '../containers/RepaymentTable';
 
 const App: React.StatelessComponent = () => (
 	<div className="App container">
