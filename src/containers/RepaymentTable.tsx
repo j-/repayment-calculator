@@ -45,7 +45,7 @@ const RepaymentTable: React.StatelessComponent<Props> = (props) => (
 	</table>
 );
 
-const DebouncedRepaymentTable = debounce(5000, RepaymentTable);
+const DebouncedRepaymentTable = debounce(1000, RepaymentTable);
 
 const mapStateToProps: MapStateToProps<StateProps, OwnProps, RootReducerState> = (state) => ({
 	loanAmount: getLoanPrincipal(state),
