@@ -3,6 +3,7 @@ import { connect, MapStateToProps } from 'react-redux';
 import { buildRepaymentTable } from '../repayments';
 import RepaymentTableRow from '../components/RepaymentTableRow';
 import RepaymentTableHeaderRow from '../components/RepaymentTableHeaderRow';
+import { debounce } from '../debounce-hoc';
 
 import {
 	RootReducerState,
@@ -44,6 +45,8 @@ const RepaymentTable: React.StatelessComponent<Props> = (props) => (
 	</table>
 );
 
+const DebouncedRepaymentTable = debounce(5000, RepaymentTable);
+
 const mapStateToProps: MapStateToProps<StateProps, OwnProps, RootReducerState> = (state) => ({
 	loanAmount: getLoanPrincipal(state),
 	repaymentAmount: getRepaymentAmount(state),
@@ -53,4 +56,4 @@ const mapStateToProps: MapStateToProps<StateProps, OwnProps, RootReducerState> =
 
 export default connect(
 	mapStateToProps,
-)(RepaymentTable);
+)(DebouncedRepaymentTable);
