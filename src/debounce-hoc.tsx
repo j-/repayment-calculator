@@ -37,25 +37,14 @@ export function debounce <T = {}>(delay: number, Component: React.ComponentType<
 		}
 
 		componentWillReceiveProps (nextProps: T) {
-			// Props have been updated and there is no timer
-			if (this.timer === undefined) {
-				// Start the timer
-				this.timer = setTimeout(this.handleTimeout, delay);
-				// Immediately update the output props
-				this.setState({
-					props: nextProps,
-				});
-			// Props have been updated but there is a timer
-			} else {
-				// Stop the timer
-				clearTimeout(this.timer);
-				// Start the timer
-				this.timer = setTimeout(this.handleTimeout, delay);
-				// Save these props for later
-				this.setState({
-					nextProps,
-				});
-			}
+			// Stop the existing timer
+			clearTimeout(this.timer);
+			// Start a new timer
+			this.timer = setTimeout(this.handleTimeout, delay);
+			// Save these props for later
+			this.setState({
+				nextProps,
+			});
 		}
 
 		render () {
