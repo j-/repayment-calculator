@@ -8,6 +8,7 @@ import App from './components/App';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
+import 'react-virtualized/styles.css';
 
 const store = createStore(rootReducer, composeWithDevTools());
 

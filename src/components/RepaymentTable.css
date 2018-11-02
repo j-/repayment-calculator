@@ -1,0 +1,14 @@
+.RepaymentTable .ReactVirtualized__Table__headerTruncatedText {
+	white-space: normal;
+}
+
+.RepaymentTable-header {
+	text-align: right;
+	text-transform: none;
+	align-self: flex-end;
+}
+
+.RepaymentTable-column {
+	font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+	text-align: right;
+}
