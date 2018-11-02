@@ -1,6 +1,14 @@
 import { Reducer } from 'redux';
 import { RepaymentFrequency, calculateRepaymentAmount } from '../repayments';
-import { MIN_LOAN_TERM } from '../loan';
+
+import {
+	MIN_LOAN_TERM,
+	MAX_LOAN_TERM,
+	MIN_LOAN_AMOUNT,
+	MAX_LOAN_AMOUNT,
+	MIN_INTEREST_RATE,
+	MAX_INTEREST_RATE,
+} from '../loan';
 
 import {
 	isActionSetLoanPrincipal,
@@ -23,18 +31,22 @@ const DEFAULT_STATE: RootReducerState = {
 	interestRate: 15.99,
 };
 
+const clamp = (value: number, min: number, max: number) => (
+	Math.max(min, Math.min(max, value))
+);
+
 const reducer: Reducer<RootReducerState> = (state = DEFAULT_STATE, action) => {
 	if (isActionSetLoanPrincipal(action)) {
 		return {
 			...state,
-			loanPrincipal: action.data.loanPrincipal,
+			loanPrincipal: clamp(action.data.loanPrincipal, MIN_LOAN_AMOUNT, MAX_LOAN_AMOUNT),
 		};
 	}
 
 	if (isActionSetLoanTerm(action)) {
 		return {
 			...state,
-			loanTerm: Math.max(action.data.loanTerm, MIN_LOAN_TERM),
+			loanTerm: clamp(action.data.loanTerm, MIN_LOAN_TERM, MAX_LOAN_TERM),
 		};
 	}
 
@@ -48,7 +60,7 @@ const reducer: Reducer<RootReducerState> = (state = DEFAULT_STATE, action) => {
 	if (isActionSetInterestRate(action)) {
 		return {
 			...state,
-			interestRate: action.data.interestRate,
+			interestRate: clamp(action.data.interestRate, MIN_INTEREST_RATE, MAX_INTEREST_RATE),
 		};
 	}
 

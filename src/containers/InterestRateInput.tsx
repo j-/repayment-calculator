@@ -2,6 +2,7 @@ import { connect, MapStateToProps, MapDispatchToProps, MergeProps } from 'react-
 import Input, { Props as P } from '../components/Input';
 import { RootReducerState, getInterestRateAnnualPercentage } from '../store';
 import { setInterestRate } from '../store/actions';
+import { MIN_INTEREST_RATE, MAX_INTEREST_RATE } from '../loan';
 
 const mapStateToProps: MapStateToProps<P, P, RootReducerState> = (state) => ({
 	value: getInterestRateAnnualPercentage(state),
@@ -20,7 +21,8 @@ const mergeProps: MergeProps<P, P, P, P> = (state, dispatch, own) => ({
 	...dispatch,
 	...own,
 	type: 'number',
-	min: 0,
+	min: MIN_INTEREST_RATE,
+	max: MAX_INTEREST_RATE,
 	step: 0.1,
 });
 
