@@ -19,7 +19,9 @@
     "start": "react-scripts-j start",
     "build": "react-scripts-j build",
     "test": "react-scripts-j test --env=jsdom",
-    "eject": "react-scripts-j eject"
+    "eject": "react-scripts-j eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "@types/classnames": "^2.2.6",
@@ -31,6 +33,19 @@
     "@types/react-dom": "^16.0.9",
     "@types/react-redux": "^6.0.9",
     "@types/react-virtualized": "^9.18.7",
+    "gh-pages": "^2.0.1",
     "typescript": "^3.1.4"
-  }
+  },
+  "description": "Calculate loan principal and interest repayments",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/j-/repayment-calculator.git"
+  },
+  "author": "Jamie Hoeks <j@skeoh.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/j-/repayment-calculator/issues"
+  },
+  "homepage": "https://skeoh.com/repayment-calculator"
 }
