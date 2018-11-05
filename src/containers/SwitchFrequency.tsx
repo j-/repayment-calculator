@@ -59,7 +59,7 @@ const SwitchFrequency: React.StatelessComponent<Props> = ({
 	setRepaymentFrequencyFortnightly,
 	setRepaymentFrequencyWeekly,
 }) => (
-	<ul className="SwitchFrequency nav nav-tabs row">
+	<ul className="SwitchFrequency nav nav-tabs row card-header-tabs">
 		<li className="nav-item col-sm">
 			<a
 				className={classNames('nav-link', repaymentFrequency === RepaymentFrequency.MONTHLY && 'active')}
