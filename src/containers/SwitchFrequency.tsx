@@ -1,8 +1,5 @@
-import * as React from 'react';
-import * as classNames from 'classnames';
 import { connect, MapStateToProps, MapDispatchToProps } from 'react-redux';
-import Dollars from '../components/Dollars';
-import { RepaymentFrequency } from '../repayments';
+import SwitchFrequency from '../components/SwitchFrequency';
 
 import {
 	RootReducerState,
@@ -35,8 +32,6 @@ interface OwnProps {
 
 }
 
-export type Props = StateProps & DispatchProps & OwnProps;
-
 const mapStateToProps: MapStateToProps<StateProps, OwnProps, RootReducerState> = (state) => ({
 	repaymentAmountMonthly: getRepaymentAmountMonthly(state),
 	repaymentAmountFortnightly: getRepaymentAmountFortnightly(state),
@@ -49,52 +44,6 @@ const mapDispatchToProps: MapDispatchToProps<DispatchProps, OwnProps> = ({
 	setRepaymentFrequencyFortnightly,
 	setRepaymentFrequencyWeekly,
 });
-
-const SwitchFrequency: React.StatelessComponent<Props> = ({
-	repaymentAmountMonthly,
-	repaymentAmountFortnightly,
-	repaymentAmountWeekly,
-	repaymentFrequency,
-	setRepaymentFrequencyMonthly,
-	setRepaymentFrequencyFortnightly,
-	setRepaymentFrequencyWeekly,
-}) => (
-	<ul className="SwitchFrequency nav nav-tabs row card-header-tabs">
-		<li className="nav-item col-sm">
-			<a
-				className={classNames('nav-link', repaymentFrequency === RepaymentFrequency.MONTHLY && 'active')}
-				href="#"
-				onClick={setRepaymentFrequencyMonthly}
-			>
-				<span className="h2">
-					<Dollars>{repaymentAmountMonthly}</Dollars>
-				</span> / Month
-			</a>
-		</li>
-		<li className="nav-item col-sm">
-			<a
-				className={classNames('nav-link', repaymentFrequency === RepaymentFrequency.FORTNIGHTLY && 'active')}
-				href="#"
-				onClick={setRepaymentFrequencyFortnightly}
-			>
-				<span className="h2">
-					<Dollars>{repaymentAmountFortnightly}</Dollars>
-				</span> / Fortnight
-			</a>
-		</li>
-		<li className="nav-item col-sm">
-			<a
-				className={classNames('nav-link', repaymentFrequency === RepaymentFrequency.WEEKLY && 'active')}
-				href="#"
-				onClick={setRepaymentFrequencyWeekly}
-			>
-				<span className="h2">
-					<Dollars>{repaymentAmountWeekly}</Dollars>
-				</span> / Week
-			</a>
-		</li>
-	</ul>
-);
 
 export default connect<StateProps, DispatchProps, OwnProps>(
 	mapStateToProps,
